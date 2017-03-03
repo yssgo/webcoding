@@ -1,0 +1,34 @@
+body.white{
+  background-color:white;
+  color:black;
+}
+body.black{
+  background-color:black;
+  color:white;
+}
+#logo {
+  width:100px;
+}
+.container{
+  padding-top:20px;
+}
+#control{
+  margin-bottom:40px;
+}
+header img{
+    width:5em;
+    float:right;
+    border-radius:10%;
+}
+
+@font-face {
+    font-family: 'DNielScript';
+    src: url('DNieCursiveScript.svg') format("svg"),
+         url('DNieCursiveScript.woff') format('woff'),
+         url('DNieCursiveScript.tff') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+.cursive {
+    font-family:DNielScript;
+}

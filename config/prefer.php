@@ -1,6 +1,6 @@
 <?php
     $prefer=array(
-        "sitename"=>"웹 코딩 ",
+        "sitename"=>"WebCoding",
         "allowed_tags"=>array(
         "<a>",
         "<h1>","<h2>","<h3>","<h4>","<h5>","<h6>","<h7>",
@@ -10,6 +10,7 @@
         "<span>",
         "<img>"
         ),
-        "uploadcare_publickey"=>"dcae6e6fb54777dc2b72"
+        "uploadcare_publickey"=>"dcae6e6fb54777dc2b72",
+        "default-css"=>"styles/style.css"
     );
 ?>

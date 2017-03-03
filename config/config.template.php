@@ -6,7 +6,7 @@ $config=array(
     "dname" => ""
 );
 $config2 = array(
-    "host" => "localhost:8080",
+    "host" => "localhost",
     "duser" => "root",
     "dpw" => "",
     "dname" => "opentutorials"

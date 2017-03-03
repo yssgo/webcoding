@@ -42,11 +42,11 @@
       echo "레코드 갱신 에러: ".mysqli_error($conn)."<br>";
       echo "<br>";
     }else{
-      if($cfgvar==""){              
-        header("Location:index.php?id=".$topic_id);
-      }else{
-        header("Location:index.php?id=".$topic_id."&cfgvar=".$cfgvar);
-      }      
+          if($cfgvar==""){              
+            header("Location:index.php?id=".$topic_id);
+          }else{
+            header("Location:index.php?id=".$topic_id."&cfgvar=".$cfgvar);
+          }      
     }
   }
 ?>

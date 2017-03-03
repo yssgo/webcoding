@@ -36,7 +36,7 @@
       }
   ?>
 
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="<?=$prefer["default-css"]?>">
 
 
 </head>
@@ -59,20 +59,20 @@
 
                 <article class="">
                     <?php
-                        if( empty($_GET['id']) == false ) {
-                            echo '<h2>'.$title1.'</h2>'."\n";
-                            echo '<p>'.$name1.'</p>'."\n";
-                            echo $description1;
-                        }
-                        else{
-                            echo "<h2>어서 오십시오. 웹코딩입니다.</h2>";
-                        }
+                    if( empty($_GET['id']) == false ) {
+                        echo '<h2>'.$title1.'</h2>'."\n";
+                        echo '<p>'.$name1.'</p>'."\n";
+                        echo $description1;
+                    }
+                    else{
+                        echo "<h2>어서 오십시오. 웹코딩입니다.</h2>";
+                    }
                     ?>
                 </article>
 
                 <hr />
                 <div id="control">
-                    <?php require("lib/style_buttons.php"); ?>
+                    <?php include('stylebuttons.php')?>
                     <?php
                     {
                         $href="./write.php";
@@ -89,21 +89,23 @@
                         echo '<a href="'.$href.'" class="btn btn-danger btn-lg">'.'삭제'.'</a>'."\n";
                     }
                     ?>
-                    <?php
-                        if(!empty($_GET['id'])){
-                            echo ' | ';
-                            echo '<a href="edit.php?id=';
-                            $edit_id=$row1['id'];
-                            echo $edit_id;
-                            if($cfgvar!=""){
-                                echo '&cfgvar='.$cfgvar;
-                            }
-                            echo '" class="btn btn-success btn-lg">편집</a>';
-                        }
-                    ?>
-                </div><!-- control  -->
-            </div><!-- col-md-9  -->
-        </div><!-- row  -->
+<?php
+if(!empty($_GET['id'])){
+    echo ' | ';
+    echo '<a href="edit.php?id=';
+    $edit_id=$row1['id'];
+    echo $edit_id;
+    if($cfgvar!=""){
+        echo '&cfgvar='.$cfgvar;
+    }
+    echo '" class="btn btn-success btn-lg">편집</a>';
+}
+?>
+</div>
+                </div>
+
+            </div>
+        </div>
     </div><!--container-->
     <?php
         require("lib/jquery_bootstrap.php");

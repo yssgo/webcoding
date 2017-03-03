@@ -19,7 +19,7 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
   <title><?=$prefer['sitename']?>:오류</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="<?=$prefer["default-css"]?>">
 </head>
 <body id="target">
 
@@ -39,22 +39,23 @@
             <div class="col-md-9">
 
                 <article class="">
-                    <?php
-                        if( empty($_GET['msg']) == true ){
-                          echo "<div><h2 style=\"color:red\">비밀번호가 틀립니다.</h2></div>\n";
-                        }
-                        else{
-                            echo "<div><h2 style=\"color:red\">".$_GET['msg']."</h2></div>\n";
-                        }
-                    ?>
-                 </article>
+<?php
+if( empty($_GET['msg']) == true ){
+  echo "<div><h2 style=\"color:red\">비밀번호가 틀립니다.</h2></div>\n";
+}
+else{
+echo "<div><h2 style=\"color:red\">".$_GET['msg']."</h2></div>\n";
+}
+?>
+ </article>
 
                 <hr />
                 <div id="control">
-                    <?php require("lib/style_buttons.php"); ?>
-                </div><!-- control  -->
-            </div><!-- col-md-9  -->
-        </div><!-- row  -->
+                    <?php include('stylebuttons.php')?>
+                </div>
+
+            </div>
+        </div>
     </div><!--container-->
     <?php
         require("lib/jquery_bootstrap.php");

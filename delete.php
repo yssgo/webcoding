@@ -19,7 +19,7 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
   <title><?=$prefer['sitename']?>:삭제</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="<?=$prefer["default-css"]?>">
 </head>
 <body id="target">
     <div class="container">
@@ -36,52 +36,55 @@
             </nav>
             <div class="col-md-9">
                 <article>
-                    <?php
-                     if( empty($_GET['id']) == false ){
-                        $action_page="delete_process.php?id=".htmlspecialchars($_GET['id']);
-                        if($cfgvar!==""){
-                            $action_page .="&cfgvar=".$cfgvar;
-                        }
-                        $sql = "SELECT topic.id,title,name,description,user.password FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
-                        $result=mysqli_query($conn,$sql);
-                        $row=mysqli_fetch_assoc($result);
-                        $title=htmlspecialchars($row['title']);
-                        $name=htmlspecialchars($row['name']);
-                        echo '<h2>'.$title.'</h2>'."\n";
-                        echo '<p>'.$name.'</p>'."\n";
 
-                    ?>
-                    <script>
-                        document.title = "<?=$prefer['sitename']?>:<?=htmlspecialchars($row['title'])?>";
-                    </script>
-                    <form class="form-horizontal" action="<?=$action_page?>" method="post" onsubmit="return check()">
-                        <div class="form-group" style="display:none">
-                            <label for="author" class="col-md-2 control-label">작성자:</label>
-                            <input type="text" class="form-cotrol col-md-10" name="author" id="author" value="<?=$row['name']?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-md-2 control-label">비밀번호:</label>
-                            <input type="password" class="form-cotrol col-md-10" name="password" id="password" required="required">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="form-cotrol" name="smit_btn">
-                        </div>
+                        <?php
+                         if( empty($_GET['id']) == false ){
+                              $action_page="delete_process.php?id=".htmlspecialchars($_GET['id']);
+                              if($cfgvar!==""){
+                                $action_page .="&cfgvar=".$cfgvar;
+                              }
+                            $sql = "SELECT topic.id,title,name,description,user.password FROM topic LEFT JOIN user ON topic.author = user.id WHERE topic.id=".$_GET['id'];
+                            $result=mysqli_query($conn,$sql);
+                            $row=mysqli_fetch_assoc($result);
+                            $title=htmlspecialchars($row['title']);
+                            $name=htmlspecialchars($row['name']);
+                            echo '<h2>'.$title.'</h2>'."\n";
+                            echo '<p>'.$name.'</p>'."\n";
 
-                    </form>
-                    <?php
-                    }
-                    else{
-                        if($cfgvar!==""){
-                            header("Location: invalid.php?msg=topi%20id가%20없습니다");
-                        }else{
-                            header("Location: invalid.php?cfgvar=".$cfgvar."msg=topi%20id가%20없습니다");
+                        ?>
+                        <script>
+                            document.title = "<?=$prefer['sitename']?>:<?=htmlspecialchars($row['title'])?>";
+                        </script>
+                        <form class="form-horizontal" action="<?=$action_page?>" method="post" onsubmit="return check()">
+                            <div class="form-group" style="display:none">
+                                <label for="author" class="col-md-2 control-label">작성자:</label>
+                                <input type="text" class="form-cotrol col-md-10" name="author" id="author" value="<?=$row['name']?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-md-2 control-label">비밀번호:</label>
+                                <input type="password" class="form-cotrol col-md-10" name="password" id="password" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="form-cotrol" name="smit_btn">
+                            </div>
+
+                        </form>
+                        <?php
                         }
-                    }
-                    ?>
+                        else{
+                            if($cfgvar!==""){
+                                header("Location: invalid.php?msg=topi%20id가%20없습니다");
+                            }else{
+                                header("Location: invalid.php?cfgvar=".$cfgvar."msg=topi%20id가%20없습니다");
+                            }
+                        }
+                        ?>
                 </article>
                 <hr />
                 <div id="control">
-                    <?php require("lib/style_buttons.php"); ?>
+                    <?php
+                        include('stylebuttons.php');
+                    ?>
                 </div>
             </div>
         </div>
